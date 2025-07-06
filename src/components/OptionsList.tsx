@@ -8,7 +8,7 @@ interface IOption {
 export default function OptionsList() {
   const [options, setOptions] = useState<IOption[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const nextIdRef = useRef(0);
+  const idRef = useRef(0);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target === null) return;
@@ -19,14 +19,14 @@ export default function OptionsList() {
     if (!inputValue) return;
 
     const newOption: IOption = {
-      id: nextIdRef.current,
+      id: idRef.current,
       description: inputValue,
     };
     console.log(newOption);
 
     setOptions((prev) => [...prev, newOption]);
 
-    nextIdRef.current += 1;
+    idRef.current += 1;
 
     setInputValue("");
   };
@@ -67,11 +67,6 @@ export default function OptionsList() {
             </div>
           );
         })}
-      </div>
-
-      <div>
-        <button>Previous</button>
-        <button>Next</button>
       </div>
     </div>
   );
