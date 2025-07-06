@@ -8,6 +8,8 @@ interface IOption {
 export default function OptionsList() {
   const [options, setOptions] = useState<IOption[]>([]);
   const [inputValue, setInputValue] = useState("");
+
+  const [editingIds, setEditingIds] = useState<Array<number>>([]);
   const idRef = useRef(0);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +24,6 @@ export default function OptionsList() {
       id: idRef.current,
       description: inputValue,
     };
-    console.log(newOption);
 
     setOptions((prev) => [...prev, newOption]);
 
@@ -33,6 +34,26 @@ export default function OptionsList() {
 
   const handleRemoveOption = (id: number) => {
     setOptions((prev) => prev.filter((option) => option.id !== id));
+  };
+
+  const handleEditOption = (id: number) => {
+    setEditingIds((prev) => [...prev, id]);
+  };
+
+  const handleSaveEdit = (id: number) => {
+    if (!inputValue) return;
+
+    setOptions((prev) =>
+      prev.map((option) =>
+        option.id === id ? { ...option, description: inputValue } : option
+      )
+    );
+
+    setEditingIds((prev) => prev.filter((edit) => edit !== id));
+  };
+
+  const handleCancelEdit = (id: number) => {
+    setEditingIds((prev) => prev.filter((item) => item !== id));
   };
 
   return (
@@ -51,19 +72,35 @@ export default function OptionsList() {
       </div>
 
       <div className="options-container">
-        {options.map((option) => {
+        {options.map((option, index) => {
           return (
             <div className="option-container" key={option.id}>
               <input
                 type="text"
                 className="option-item"
-                value={option.description}
-                readOnly
+                readOnly={!editingIds.includes(option.id)}
+                defaultValue={option.description}
+                onChange={handleInputChange}
               />
-              <button>Edit</button>
-              <button onClick={() => handleRemoveOption(option.id)}>
-                Remove
-              </button>
+              {editingIds.includes(option.id) ? (
+                <>
+                  <button onClick={() => handleSaveEdit(option.id, index)}>
+                    Save
+                  </button>
+                  <button onClick={() => handleCancelEdit(option.id)}>
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button onClick={() => handleEditOption(option.id)}>
+                    Edit
+                  </button>
+                  <button onClick={() => handleRemoveOption(option.id)}>
+                    Remove
+                  </button>
+                </>
+              )}
             </div>
           );
         })}
