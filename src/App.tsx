@@ -1,4 +1,6 @@
 import "./App.css";
+// import Card from "./components/Card";
+import OptionsList from "./components/OptionsList";
 
 function App() {
   return (
@@ -12,18 +14,9 @@ function App() {
         </ul>
       </nav>
 
-      <div>
-        <h1>D3 app</h1>
-        <div className="card">
-          <h1 className="card-title">Card Title</h1>
-          <p className="card-body">
-            Card body Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Sit alias architecto quam, modi voluptate optio fuga aspernatur
-            earum repellat est, nemo sunt itaque. Iste sint est perferendis ut,
-            exercitationem natus?
-          </p>
-        </div>
-      </div>
+      <h1>D3 app</h1>
+      <OptionsList></OptionsList>
+      {/* <Card></Card> */}
     </div>
   );
 }

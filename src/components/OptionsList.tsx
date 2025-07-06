@@ -1,0 +1,78 @@
+import { useRef, useState } from "react";
+
+interface IOption {
+  id: number;
+  description: string;
+}
+
+export default function OptionsList() {
+  const [options, setOptions] = useState<IOption[]>([]);
+  const [inputValue, setInputValue] = useState("");
+  const nextIdRef = useRef(0);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target === null) return;
+    setInputValue(e.target.value);
+  };
+
+  const handleAddOption = () => {
+    if (!inputValue) return;
+
+    const newOption: IOption = {
+      id: nextIdRef.current,
+      description: inputValue,
+    };
+    console.log(newOption);
+
+    setOptions((prev) => [...prev, newOption]);
+
+    nextIdRef.current += 1;
+
+    setInputValue("");
+  };
+
+  const handleRemoveOption = (id: number) => {
+    setOptions((prev) => prev.filter((option) => option.id !== id));
+  };
+
+  return (
+    <div>
+      <h1>Setting up...</h1>
+      <p>Add your options below:</p>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Lasagna"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <button onClick={handleAddOption}>Add</button>
+      </div>
+
+      <div className="options-container">
+        {options.map((option) => {
+          return (
+            <div className="option-container" key={option.id}>
+              <input
+                type="text"
+                className="option-item"
+                value={option.description}
+                readOnly
+              />
+              <button>Edit</button>
+              <button onClick={() => handleRemoveOption(option.id)}>
+                Remove
+              </button>
+            </div>
+          );
+        })}
+      </div>
+
+      <div>
+        <button>Previous</button>
+        <button>Next</button>
+      </div>
+    </div>
+  );
+}

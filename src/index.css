@@ -1,5 +1,13 @@
 :root {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  --color-primary: brown;
+  --color-secondary: brown;
+  --color-success: brown;
+  --color-warning: brown;
+  --color-danger: brown;
+  --color-black: brown;
+  --color-white: brown;
+  --color-neutral: brown;
 }
 
 body {
