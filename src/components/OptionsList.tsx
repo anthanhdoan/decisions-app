@@ -37,15 +37,14 @@ export default function OptionsList() {
       <h1>Setting up...</h1>
       <p>Add your options below:</p>
 
-      <div>
-        <input
-          type="text"
-          placeholder="Lasagna"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleAddOption}>Add</button>
-      </div>
+      <input
+        type="text"
+        placeholder="Lasagna"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+
+      <button onClick={handleAddOption}>Add</button>
 
       <ul className="options-container">
         {options.map((option) => {
