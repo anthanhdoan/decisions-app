@@ -1,0 +1,19 @@
+.option-item {
+  width: 20rem;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.option-item-saved {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.option-item-saved:focus {
+  outline: none;
+}
+
+.option-item-saved:hover {
+  cursor: default;
+}

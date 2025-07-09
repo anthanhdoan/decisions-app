@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
+import "./OptionsList.css";
+import ListItem from "./ListItem";
 
-interface IOption {
+export interface IOption {
   id: number;
   description: string;
 }
@@ -8,8 +10,6 @@ interface IOption {
 export default function OptionsList() {
   const [options, setOptions] = useState<IOption[]>([]);
   const [inputValue, setInputValue] = useState("");
-
-  const [editingIds, setEditingIds] = useState<Array<number>>([]);
   const idRef = useRef(0);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,30 +32,6 @@ export default function OptionsList() {
     setInputValue("");
   };
 
-  const handleRemoveOption = (id: number) => {
-    setOptions((prev) => prev.filter((option) => option.id !== id));
-  };
-
-  const handleEditOption = (id: number) => {
-    setEditingIds((prev) => [...prev, id]);
-  };
-
-  const handleSaveEdit = (id: number) => {
-    if (!inputValue) return;
-
-    setOptions((prev) =>
-      prev.map((option) =>
-        option.id === id ? { ...option, description: inputValue } : option
-      )
-    );
-
-    setEditingIds((prev) => prev.filter((edit) => edit !== id));
-  };
-
-  const handleCancelEdit = (id: number) => {
-    setEditingIds((prev) => prev.filter((item) => item !== id));
-  };
-
   return (
     <div>
       <h1>Setting up...</h1>
@@ -71,40 +47,20 @@ export default function OptionsList() {
         <button onClick={handleAddOption}>Add</button>
       </div>
 
-      <div className="options-container">
-        {options.map((option, index) => {
+      <ul className="options-container">
+        {options.map((option) => {
           return (
-            <div className="option-container" key={option.id}>
-              <input
-                type="text"
-                className="option-item"
-                readOnly={!editingIds.includes(option.id)}
-                defaultValue={option.description}
-                onChange={handleInputChange}
-              />
-              {editingIds.includes(option.id) ? (
-                <>
-                  <button onClick={() => handleSaveEdit(option.id, index)}>
-                    Save
-                  </button>
-                  <button onClick={() => handleCancelEdit(option.id)}>
-                    Cancel
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button onClick={() => handleEditOption(option.id)}>
-                    Edit
-                  </button>
-                  <button onClick={() => handleRemoveOption(option.id)}>
-                    Remove
-                  </button>
-                </>
-              )}
-            </div>
+            <li className="option-container" key={option.id}>
+              <ListItem
+                // options={options}
+                optionId={option.id}
+                optionDescription={option.description}
+                setOptions={setOptions}
+              ></ListItem>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </div>
   );
 }
