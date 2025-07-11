@@ -10,6 +10,7 @@ export interface IOption {
 export default function OptionsList() {
   const [options, setOptions] = useState<IOption[]>([]);
   const [inputValue, setInputValue] = useState("");
+
   const idRef = useRef(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -34,6 +35,7 @@ export default function OptionsList() {
   };
 
   return (
+    //refactor by adding AddOption component
     <div>
       <h1>Setting up...</h1>
       <p>Add your options below:</p>
