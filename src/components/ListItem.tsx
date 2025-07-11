@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import type { IOption } from "./OptionsList";
 import "./ListItem.css";
 
 interface IListItemProps {
   optionId: number;
   optionDescription: string;
-  // options: IOption[];
   setOptions: React.Dispatch<React.SetStateAction<IOption[]>>;
 }
-
-//DOUBLECHECK IF THE OPTIONS ARRAY ACTUALLY GETS UPDATED AFTER YOU SAVE, CANCEL OR REMOVE
 
 export default function ListItem(props: IListItemProps) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editValue, setEditValue] = useState<string>(props.optionDescription);
-
-  useEffect(() => {}, [editValue]);
+  const inputRef: React.RefObject<HTMLInputElement | null> =
+    useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target === null) return;
@@ -31,6 +28,7 @@ export default function ListItem(props: IListItemProps) {
   const handleEditOption = () => {
     setIsEditing(true);
     setEditValue(props.optionDescription);
+    inputRef.current?.focus();
   };
 
   const handleSaveEdit = (id: number) => {
@@ -52,27 +50,37 @@ export default function ListItem(props: IListItemProps) {
 
   return (
     <>
-      <input
-        type="text"
-        className={`option-item ${isEditing ? "" : "option-item-saved"}`}
-        readOnly={!isEditing}
-        defaultValue={editValue}
-        onChange={handleInputChange}
-      />
+      <form onSubmit={(e) => e.preventDefault()}>
+        <input
+          ref={inputRef}
+          type="text"
+          className={`option-item ${isEditing ? "" : "option-item-saved"}`}
+          readOnly={!isEditing}
+          value={editValue}
+          onChange={handleInputChange}
+        />
 
-      {isEditing ? (
-        <>
-          <button onClick={() => handleSaveEdit(props.optionId)}>Save</button>
-          <button onClick={() => handleCancelEdit()}>Cancel</button>
-        </>
-      ) : (
-        <>
-          <button onClick={() => handleEditOption()}>Edit</button>
-          <button onClick={() => handleRemoveOption(props.optionId)}>
-            Remove
-          </button>
-        </>
-      )}
+        {!isEditing ? (
+          <>
+            <button type="submit" onClick={() => handleEditOption()}>
+              Edit
+            </button>
+            <button onClick={() => handleRemoveOption(props.optionId)}>
+              Remove
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              type="submit"
+              onClick={() => handleSaveEdit(props.optionId)}
+            >
+              Save
+            </button>
+            <button onClick={() => handleCancelEdit()}>Cancel</button>
+          </>
+        )}
+      </form>
     </>
   );
 }

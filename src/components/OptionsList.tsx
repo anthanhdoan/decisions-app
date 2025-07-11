@@ -11,9 +11,9 @@ export default function OptionsList() {
   const [options, setOptions] = useState<IOption[]>([]);
   const [inputValue, setInputValue] = useState("");
   const idRef = useRef(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target === null) return;
     setInputValue(e.target.value);
   };
 
@@ -30,28 +30,29 @@ export default function OptionsList() {
     idRef.current += 1;
 
     setInputValue("");
+    inputRef.current?.focus();
   };
 
   return (
     <div>
       <h1>Setting up...</h1>
       <p>Add your options below:</p>
-
-      <input
-        type="text"
-        placeholder="Lasagna"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-
-      <button onClick={handleAddOption}>Add</button>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <input
+          type="text"
+          placeholder="Lasagna"
+          value={inputValue}
+          onChange={handleInputChange}
+          ref={inputRef}
+        />
+        <button onClick={handleAddOption}>Add</button>
+      </form>
 
       <ul className="options-container">
         {options.map((option) => {
           return (
             <li className="option-container" key={option.id}>
               <ListItem
-                // options={options}
                 optionId={option.id}
                 optionDescription={option.description}
                 setOptions={setOptions}
