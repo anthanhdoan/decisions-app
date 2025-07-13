@@ -14,11 +14,11 @@ export default function OptionsList() {
   const idRef = useRef(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const handleAddOption = () => {
+  const addOption = () => {
     if (!inputValue) return;
 
     const newOption: IOption = {
@@ -44,10 +44,10 @@ export default function OptionsList() {
           type="text"
           placeholder="Lasagna"
           value={inputValue}
-          onChange={handleInputChange}
+          onChange={updateInput}
           ref={inputRef}
         />
-        <button onClick={handleAddOption}>Add</button>
+        <button onClick={addOption}>Add</button>
       </form>
 
       <ul className="options-container">

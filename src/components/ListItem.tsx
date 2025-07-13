@@ -14,24 +14,24 @@ export default function ListItem(props: IListItemProps) {
   const inputRef: React.RefObject<HTMLInputElement | null> =
     useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target === null) return;
     setEditValue(e.target.value);
   };
 
-  const handleRemoveOption = (id: number) => {
+  const removeOption = (id: number) => {
     props.setOptions((prev: IOption[]) =>
       prev.filter((option) => option.id !== id)
     );
   };
 
-  const handleEditOption = () => {
+  const editOption = () => {
     setIsEditing(true);
     setEditValue(props.optionDescription);
     inputRef.current?.focus();
   };
 
-  const handleSaveEdit = (id: number) => {
+  const saveEditedValue = (id: number) => {
     if (!editValue) return;
 
     props.setOptions((prev) =>
@@ -43,7 +43,7 @@ export default function ListItem(props: IListItemProps) {
     setIsEditing(false);
   };
 
-  const handleCancelEdit = () => {
+  const cancelEdit = () => {
     setEditValue(props.optionDescription);
     setIsEditing(false);
   };
@@ -57,27 +57,25 @@ export default function ListItem(props: IListItemProps) {
           className={`option-item ${isEditing ? "" : "option-item-saved"}`}
           readOnly={!isEditing}
           value={editValue}
-          onChange={handleInputChange}
+          onChange={updateInput}
         />
 
         {!isEditing ? (
           <>
-            <button type="submit" onClick={() => handleEditOption()}>
+            <button type="submit" onClick={() => editOption()}>
               Edit
             </button>
-            <button onClick={() => handleRemoveOption(props.optionId)}>
-              Remove
-            </button>
+            <button onClick={() => removeOption(props.optionId)}>Remove</button>
           </>
         ) : (
           <>
             <button
               type="submit"
-              onClick={() => handleSaveEdit(props.optionId)}
+              onClick={() => saveEditedValue(props.optionId)}
             >
               Save
             </button>
-            <button onClick={() => handleCancelEdit()}>Cancel</button>
+            <button onClick={() => cancelEdit()}>Cancel</button>
           </>
         )}
       </form>
