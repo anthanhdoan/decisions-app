@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./OptionsList.css";
 import ListItem from "./ListItem";
+import AddOption from "./AddOption";
 
 export interface IOption {
   id: number;
@@ -9,46 +10,10 @@ export interface IOption {
 
 export default function OptionsList() {
   const [options, setOptions] = useState<IOption[]>([]);
-  const [inputValue, setInputValue] = useState("");
-
-  const idRef = useRef(0);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const updateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
-  const addOption = () => {
-    if (!inputValue) return;
-
-    const newOption: IOption = {
-      id: idRef.current,
-      description: inputValue,
-    };
-
-    setOptions((prev) => [...prev, newOption]);
-
-    idRef.current += 1;
-
-    setInputValue("");
-    inputRef.current?.focus();
-  };
 
   return (
-    //refactor by adding AddOption component
     <div>
-      <h1>Setting up...</h1>
-      <p>Add your options below:</p>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="text"
-          placeholder="Lasagna"
-          value={inputValue}
-          onChange={updateInput}
-          ref={inputRef}
-        />
-        <button onClick={addOption}>Add</button>
-      </form>
+      <AddOption setOptions={setOptions} />
 
       <ul className="options-container">
         {options.map((option) => {
@@ -58,7 +23,7 @@ export default function OptionsList() {
                 optionId={option.id}
                 optionDescription={option.description}
                 setOptions={setOptions}
-              ></ListItem>
+              />
             </li>
           );
         })}

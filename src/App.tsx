@@ -5,8 +5,8 @@ import OptionsList from "./components/OptionsList";
 function App() {
   return (
     <div className="container">
-      <NavBar></NavBar>
-      <OptionsList></OptionsList>
+      <NavBar />
+      <OptionsList />
     </div>
   );
 }
