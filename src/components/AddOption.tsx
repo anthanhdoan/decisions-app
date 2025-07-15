@@ -45,7 +45,9 @@ export default function AddOption(props: IAddOptionProps) {
           onChange={updateInput}
           ref={inputElementRef}
         />
-        <button onClick={addOption}>Add</button>
+        <button disabled={!inputValue} onClick={addOption}>
+          Add
+        </button>
       </form>
     </>
   );

@@ -72,6 +72,7 @@ export default function ListItem(props: IListItemProps) {
             <button
               type="submit"
               onClick={() => saveEditedValue(props.optionId)}
+              disabled={!editValue}
             >
               Save
             </button>
