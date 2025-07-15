@@ -1,12 +1,12 @@
 import "./App.css";
+import MultiStep from "./components/MultiStep";
 import NavBar from "./components/NavBar";
-import OptionsList from "./components/OptionsList";
 
 function App() {
   return (
     <div className="container">
       <NavBar />
-      <OptionsList />
+      <MultiStep></MultiStep>
     </div>
   );
 }
