@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import type { IOption } from "./OptionsList";
 import "./ListItem.css";
+import type { IOption } from "../contexts/OptionsContext";
 
 interface IListItemProps {
   optionId: number;
