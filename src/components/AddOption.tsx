@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import type { IOption } from "./OptionsList";
+import type { IOption } from "../contexts/OptionsContext";
 
 interface IAddOptionProps {
   setOptions: React.Dispatch<React.SetStateAction<IOption[]>>;
