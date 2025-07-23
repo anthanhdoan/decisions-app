@@ -50,7 +50,7 @@ export default function ListItem(props: IListItemProps) {
 
   return (
     <>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form className="listitem-container" onSubmit={(e) => e.preventDefault()}>
         <input
           ref={inputRef}
           type="text"
@@ -61,23 +61,35 @@ export default function ListItem(props: IListItemProps) {
         />
 
         {!isEditing ? (
-          <>
-            <button type="submit" onClick={() => editOption()}>
+          <div className="listitem-buttons-container">
+            <button
+              className="listitem-button"
+              type="submit"
+              onClick={() => editOption()}
+            >
               Edit
             </button>
-            <button onClick={() => removeOption(props.optionId)}>Remove</button>
-          </>
-        ) : (
-          <>
             <button
+              className="listitem-button"
+              onClick={() => removeOption(props.optionId)}
+            >
+              Remove
+            </button>
+          </div>
+        ) : (
+          <div className="listitem-buttons-container">
+            <button
+              className="listitem-button"
               type="submit"
               onClick={() => saveEditedValue(props.optionId)}
               disabled={!editValue}
             >
               Save
             </button>
-            <button onClick={() => cancelEdit()}>Cancel</button>
-          </>
+            <button className="listitem-button" onClick={() => cancelEdit()}>
+              Cancel
+            </button>
+          </div>
         )}
       </form>
     </>

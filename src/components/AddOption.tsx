@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import type { IOption } from "../contexts/OptionsContext";
+import "./AddOption.css";
 
 interface IAddOptionProps {
   setOptions: React.Dispatch<React.SetStateAction<IOption[]>>;
@@ -37,8 +38,9 @@ export default function AddOption(props: IAddOptionProps) {
         Create a list of options. <br />
         Then, click next to select your decision making tool.
       </p>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form className="addoption-form" onSubmit={(e) => e.preventDefault()}>
         <input
+          className="addoption-input"
           type="text"
           placeholder="Lasagna"
           value={inputValue}

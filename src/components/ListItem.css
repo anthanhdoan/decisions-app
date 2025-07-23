@@ -1,13 +1,22 @@
+.listitem-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0 0 0;
+  gap: 0.5rem;
+}
+
 .option-item {
-  width: 20rem;
+  width: 100%;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
   outline: none;
+  border: 1px solid black;
 }
 
 .option-item-saved {
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 1px solid #ddd;
 }
 
 .option-item-saved:focus {
@@ -16,4 +25,11 @@
 
 .option-item-saved:hover {
   cursor: default;
+}
+
+.listitem-buttons-container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
 }

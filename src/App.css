@@ -1,14 +1,14 @@
-.container {
+.app-container {
   width: 1200px;
-  background-color: #eee;
+  min-height: calc(100vh - 3rem);
+  /* background-color: #eee; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
   margin: 0;
   padding: 1rem 0;
-}
-
-.button {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
 }

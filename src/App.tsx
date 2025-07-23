@@ -5,11 +5,13 @@ import { OptionsProvider } from "./contexts/OptionsContext";
 
 function App() {
   return (
-    <div className="container">
+    <div>
       <NavBar />
-      <OptionsProvider>
-        <MultiStep></MultiStep>
-      </OptionsProvider>
+      <div className="app-container">
+        <OptionsProvider>
+          <MultiStep></MultiStep>
+        </OptionsProvider>
+      </div>
     </div>
   );
 }
