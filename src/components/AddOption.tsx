@@ -33,11 +33,6 @@ export default function AddOption(props: IAddOptionProps) {
 
   return (
     <>
-      <h1>Adding your options</h1>
-      <p>
-        Create a list of options. <br />
-        Then, click next to select your decision making tool.
-      </p>
       <form className="addoption-form" onSubmit={(e) => e.preventDefault()}>
         <input
           className="addoption-input"

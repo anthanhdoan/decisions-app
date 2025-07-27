@@ -8,7 +8,13 @@ export default function OptionsList() {
   const { options, setOptions } = useContext(OptionsContext);
 
   return (
-    <div>
+    <div className="optionslist-container">
+      <h1>Adding your options</h1>
+      <p>
+        Create a list of options. <br />
+        Then, click next to select your decision making tool.
+      </p>
+
       <AddOption setOptions={setOptions} />
 
       <ul className="options-container">
