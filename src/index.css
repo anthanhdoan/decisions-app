@@ -1,13 +1,20 @@
 :root {
+  /* primary accents */
+  --color-primary: #8075ca;
+  --color-secondary: #006045;
+
+  /* Status  */
+  --color-success: #198754;
+  --color-info: #0dcaf0;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+
+  /* Neutrals & text */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  --color-primary: brown;
-  --color-secondary: brown;
-  --color-success: brown;
-  --color-warning: brown;
-  --color-danger: brown;
-  --color-black: brown;
-  --color-white: brown;
-  --color-neutral: brown;
+  --color-light: #f8f9fa;
+  --color-dark: #212529;
+  --color-text: var(--color-dark);
+  --color-muted: #6c757d;
 }
 
 body {
