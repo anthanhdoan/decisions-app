@@ -36,3 +36,12 @@ input {
   border-radius: 0.5rem;
   border: 1px solid black;
 }
+
+/* Below is for the tool selection page. 
+Will likely be refactored and moved to a different component */
+
+#tool-dropdown {
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}

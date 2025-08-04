@@ -13,7 +13,13 @@ export interface IOptionsContext {
 // eslint-disable-next-line react-refresh/only-export-components, @typescript-eslint/no-explicit-any
 export const OptionsContext = createContext<IOptionsContext | any>(undefined);
 
-const initialOptionsState: Array<IOption> = [];
+// Replaced empty initialstate for placeholder content; remove before finishing.
+// const initialOptionsState: Array<IOption> = [];
+const initialOptionsState: Array<IOption> = [
+  { id: 1, description: "First option placeholder" },
+  { id: 2, description: "Second option placeholder" },
+  { id: 3, description: "Third option placeholder" },
+];
 
 export const OptionsProvider = ({
   children,
