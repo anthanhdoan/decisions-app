@@ -1,7 +1,6 @@
 .app-container {
   width: 1200px;
   min-height: calc(100vh - 3rem);
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;

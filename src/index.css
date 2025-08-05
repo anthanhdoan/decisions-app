@@ -5,7 +5,7 @@
 
   /* Status  */
   --color-success: #198754;
-  --color-info: #0dcaf0;
+  --color-info: #005fb8;
   --color-warning: #ffc107;
   --color-danger: #dc3545;
 
@@ -17,8 +17,30 @@
   --color-muted: #6c757d;
 }
 
+.btn-info {
+  color: #fff;
+  background-color: var(--color-info);
+}
+
+.btn-success {
+  color: #fff;
+  background-color: var(--color-success);
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: var(--color-danger);
+}
+
 body {
   margin: 0;
   display: flex;
   justify-content: center;
+  background: linear-gradient(
+    80deg,
+    #e6fff7 0%,
+    #ffffff 40%,
+    #ffffff 60%,
+    #e6fff7 100%
+  );
 }

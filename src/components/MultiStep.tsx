@@ -4,7 +4,7 @@ import "./MultiStep.css";
 
 export default function MultiStep() {
   // set initial state for step to 1 after finishing the other steps.
-  const [step, setStep] = useState<number>(2);
+  const [step, setStep] = useState<number>(1);
   const [selectedTool, setSelectedTool] = useState<string>("");
 
   const nextStep = () => {
@@ -123,7 +123,7 @@ export default function MultiStep() {
             <button className="multistep-button" onClick={prevStep}>
               Previous
             </button>
-            <button className="multistep-button">Continue</button>
+            <button className="multistep-button">Finish</button>
           </div>
         </div>
       )}

@@ -1,6 +1,7 @@
 .multistep-container {
   border-radius: 0.5rem;
-  box-shadow: 0 0 10px #ddd;
+  box-shadow: 0 0 1rem #ddd;
+  background-color: #fff;
 }
 
 .multistep-page {

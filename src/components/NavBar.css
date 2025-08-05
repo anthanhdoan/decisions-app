@@ -7,6 +7,17 @@
   justify-content: space-between;
 }
 
+.nav-bar::after {
+  width: 100vw;
+  height: 3rem;
+  content: "";
+  background-color: #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .nav-logo {
   padding: 0.5rem 1rem;
 }

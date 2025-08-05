@@ -1,6 +1,13 @@
 import { useRef, useState } from "react";
 import "./ListItem.css";
 import type { IOption } from "../contexts/OptionsContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrash,
+  faPenToSquare,
+  faCancel,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface IListItemProps {
   optionId: number;
@@ -67,13 +74,13 @@ export default function ListItem(props: IListItemProps) {
               type="submit"
               onClick={() => editOption()}
             >
-              Edit
+              <FontAwesomeIcon icon={faPenToSquare} />
             </button>
             <button
-              className="listitem-button"
+              className="listitem-button btn-danger"
               onClick={() => removeOption(props.optionId)}
             >
-              Remove
+              <FontAwesomeIcon icon={faTrash} />
             </button>
           </div>
         ) : (
@@ -84,10 +91,10 @@ export default function ListItem(props: IListItemProps) {
               onClick={() => saveEditedValue(props.optionId)}
               disabled={!editValue}
             >
-              Save
+              <FontAwesomeIcon icon={faCheck} />
             </button>
             <button className="listitem-button" onClick={() => cancelEdit()}>
-              Cancel
+              <FontAwesomeIcon icon={faCancel} />
             </button>
           </div>
         )}
