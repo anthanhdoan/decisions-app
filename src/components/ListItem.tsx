@@ -28,7 +28,7 @@ export default function ListItem(props: IListItemProps) {
 
   const removeOption = (id: number) => {
     props.setOptions((prev: IOption[]) =>
-      prev.filter((option) => option.id !== id)
+      prev.filter((option) => option.id !== id),
     );
   };
 
@@ -43,8 +43,8 @@ export default function ListItem(props: IListItemProps) {
 
     props.setOptions((prev) =>
       prev.map((option) =>
-        option.id === id ? { ...option, description: editValue } : option
-      )
+        option.id === id ? { ...option, description: editValue } : option,
+      ),
     );
 
     setIsEditing(false);
@@ -57,7 +57,10 @@ export default function ListItem(props: IListItemProps) {
 
   return (
     <>
-      <form className="listitem-container" onSubmit={(e) => e.preventDefault()}>
+      <form
+        className="list-item-container"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <input
           ref={inputRef}
           type="text"
@@ -68,9 +71,9 @@ export default function ListItem(props: IListItemProps) {
         />
 
         {!isEditing ? (
-          <div className="listitem-buttons-container">
+          <div className="list-item-buttons-container">
             <button
-              className="listitem-button"
+              className="listitem-button btn-info"
               type="submit"
               onClick={() => editOption()}
             >
@@ -84,16 +87,19 @@ export default function ListItem(props: IListItemProps) {
             </button>
           </div>
         ) : (
-          <div className="listitem-buttons-container">
+          <div className="list-item-buttons-container">
             <button
-              className="listitem-button"
+              className="listitem-button btn-success"
               type="submit"
               onClick={() => saveEditedValue(props.optionId)}
               disabled={!editValue}
             >
               <FontAwesomeIcon icon={faCheck} />
             </button>
-            <button className="listitem-button" onClick={() => cancelEdit()}>
+            <button
+              className="listitem-button btn-info"
+              onClick={() => cancelEdit()}
+            >
               <FontAwesomeIcon icon={faCancel} />
             </button>
           </div>

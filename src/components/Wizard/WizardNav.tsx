@@ -10,27 +10,11 @@ interface IWizardNavProps {
 export default function WizardNav(props: IWizardNavProps) {
   return (
     <div className="multistep-buttons-container">
-      {!props.canPrev && (
-        <button className="multistep-button" disabled>
-          Previous
-        </button>
-      )}
-      {props.canPrev && (
-        <button className="multistep-button" onClick={props.onPrev}>
-          Previous
-        </button>
-      )}
+      {!props.canPrev && <button disabled>Previous</button>}
+      {props.canPrev && <button onClick={props.onPrev}>Previous</button>}
 
-      {!props.isFinal && (
-        <button className="multistep-button" onClick={props.onNext}>
-          Next
-        </button>
-      )}
-      {props.isFinal && (
-        <button className="multistep-button" onClick={props.onNext}>
-          Finish
-        </button>
-      )}
+      {!props.isFinal && <button onClick={props.onNext}>Next</button>}
+      {props.isFinal && <button onClick={props.onFinish}>Finish</button>}
     </div>
   );
 }

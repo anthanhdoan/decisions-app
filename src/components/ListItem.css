@@ -1,4 +1,4 @@
-.listitem-container {
+.list-item-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,7 @@
   cursor: default;
 }
 
-.listitem-buttons-container {
+.list-item-buttons-container {
   box-sizing: border-box;
   display: flex;
   justify-content: end;

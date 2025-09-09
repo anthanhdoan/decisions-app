@@ -120,7 +120,12 @@ export default function MultiStep() {
               })}
             </ul>
           </div>
-          <WizardNav canPrev={true} onPrev={prevStep} isFinal={true} />
+          <WizardNav
+            canPrev={true}
+            onPrev={prevStep}
+            isFinal={true}
+            onFinish={() => console.log("Finished!")}
+          />
         </div>
       )}
     </div>
