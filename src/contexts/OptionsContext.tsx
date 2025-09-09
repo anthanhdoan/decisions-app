@@ -7,13 +7,13 @@ export interface IOption {
 
 export interface IOptionsContext {
   options: IOption[];
-  setOptions: React.Dispatch<React.SetStateAction<IOption[]>>;
+  setOptions: Dispatch<SetStateAction<IOption[]>>;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components, @typescript-eslint/no-explicit-any
 export const OptionsContext = createContext<IOptionsContext | any>(undefined);
 
-// Replaced empty initialstate for placeholder content; remove before finishing.
+// Replaced empty initialState for placeholder content; remove before finishing.
 // const initialOptionsState: Array<IOption> = [];
 const initialOptionsState: Array<IOption> = [
   { id: 1, description: "First option placeholder" },
@@ -21,11 +21,7 @@ const initialOptionsState: Array<IOption> = [
   { id: 3, description: "Third option placeholder" },
 ];
 
-export const OptionsProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const OptionsProvider = ({ children }: { children: ReactNode }) => {
   const [options, setOptions] = useState<Array<IOption>>(initialOptionsState);
 
   return (

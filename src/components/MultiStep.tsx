@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import OptionsList from "./OptionsList";
 import "./MultiStep.css";
+import { type IOption, OptionsContext } from "../contexts/OptionsContext.tsx";
 
 export default function MultiStep() {
   // set initial state for step to 1 after finishing the other steps.
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(2);
   const [selectedTool, setSelectedTool] = useState<string>("");
+
+  const { options } = useContext(OptionsContext);
 
   const nextStep = () => {
     setStep((prev) => prev + 1);
@@ -35,9 +38,9 @@ export default function MultiStep() {
       {step === 2 && (
         <div className="multistep-page">
           <div>
-            <h1>Choose a decisionmaking helper</h1>
+            <h1>Choose a decision making helper</h1>
             <p>
-              Make a choice depending on your decisionmaking needs. An
+              Make a choice depending on your decision making needs. An
               explanation will be shown after selecting a helper.
             </p>
             <label htmlFor="tool selection dropdown">
@@ -47,8 +50,8 @@ export default function MultiStep() {
                 id="tool-dropdown"
                 onChange={(e) => setSelectedTool(e.target.value)}
               >
-                <option selected hidden value="">
-                  Select your decisionmaking helper
+                <option selected value="">
+                  Select your decision-making helper
                 </option>
                 <option value="versus">Versus mode</option>
                 <option value="random">Random decision</option>
@@ -64,7 +67,7 @@ export default function MultiStep() {
             {selectedTool === "versus" && (
               <div className="tool-explanation">
                 <p>
-                  This decisionmaking helper is best used when you need to
+                  This decision-making helper is best used when you need to
                   decide on a single option.
                 </p>
                 <p>
@@ -76,7 +79,7 @@ export default function MultiStep() {
             {selectedTool === "random" && (
               <div className="tool-explanation">
                 <p>
-                  This decisionmaking helper is best used when you have several
+                  This decision-making helper is best used when you have several
                   options to choose from, but don't have a real preference.
                 </p>
                 <p>It will simply choose one of your options at random.</p>
@@ -86,7 +89,7 @@ export default function MultiStep() {
             {selectedTool === "tournament" && (
               <div className="tool-explanation">
                 <p>
-                  This decisionmaking helper is best used you need to decide on
+                  This decision-making helper is best used you need to decide on
                   multiple options.
                 </p>
                 <p>
@@ -116,9 +119,14 @@ export default function MultiStep() {
         <div className="multistep-page">
           <h1>Confirmation</h1>
           <p>
-            [Confirmation paragraph, e.g. "These are your options, and you'll
-            use X tool, is that correct?"]
+            You have selected the [TOOL] decision-making helper. These are the
+            options you have listed:
           </p>
+          <ul>
+            {options.map((option: IOption) => {
+              return <li>{option.description}</li>;
+            })}
+          </ul>
           <div className="multistep-buttons-container">
             <button className="multistep-button" onClick={prevStep}>
               Previous
