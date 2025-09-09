@@ -117,16 +117,19 @@ export default function MultiStep() {
       )}
       {step === 3 && (
         <div className="multistep-page">
-          <h1>Confirmation</h1>
-          <p>
-            You have selected the [TOOL] decision-making helper. These are the
-            options you have listed:
-          </p>
-          <ul>
-            {options.map((option: IOption) => {
-              return <li>{option.description}</li>;
-            })}
-          </ul>
+          <div>
+            <h1>Confirmation</h1>
+            <p>
+              You have selected the <b>'{selectedTool}'</b> decision-making
+              helper.
+            </p>
+            <p>These are the options you have listed:</p>
+            <ul>
+              {options.map((option: IOption) => {
+                return <li>{option.description}</li>;
+              })}
+            </ul>
+          </div>
           <div className="multistep-buttons-container">
             <button className="multistep-button" onClick={prevStep}>
               Previous
