@@ -1,5 +1,5 @@
 import "./App.css";
-import MultiStep from "./components/MultiStep";
+import MultiStep from "./components/Wizard/MultiStep.tsx";
 import NavBar from "./components/NavBar";
 import { OptionsProvider } from "./contexts/OptionsContext";
 

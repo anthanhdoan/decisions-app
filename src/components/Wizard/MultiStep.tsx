@@ -1,7 +1,10 @@
 import { useContext, useState } from "react";
-import OptionsList from "./OptionsList";
+import OptionsList from "../OptionsList.tsx";
 import "./MultiStep.css";
-import { type IOption, OptionsContext } from "../contexts/OptionsContext.tsx";
+import {
+  type IOption,
+  OptionsContext,
+} from "../../contexts/OptionsContext.tsx";
 
 export default function MultiStep() {
   // set initial state for step to 1 after finishing the other steps.
@@ -43,16 +46,15 @@ export default function MultiStep() {
               Make a choice depending on your decision making needs. An
               explanation will be shown after selecting a helper.
             </p>
-            <label htmlFor="tool selection dropdown">
+            <label htmlFor="tool-dropdown">
               <select
                 required
                 name="tool dropdown"
                 id="tool-dropdown"
                 onChange={(e) => setSelectedTool(e.target.value)}
+                defaultValue={selectedTool}
               >
-                <option selected value="">
-                  Select your decision-making helper
-                </option>
+                <option value="">Select your decision-making helper</option>
                 <option value="versus">Versus mode</option>
                 <option value="random">Random decision</option>
                 <option value="tournament">Tournament mode</option>
@@ -126,7 +128,7 @@ export default function MultiStep() {
             <p>These are the options you have listed:</p>
             <ul>
               {options.map((option: IOption) => {
-                return <li>{option.description}</li>;
+                return <li key={option.id}>{option.description}</li>;
               })}
             </ul>
           </div>
