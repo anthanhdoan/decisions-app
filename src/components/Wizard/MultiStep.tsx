@@ -5,10 +5,11 @@ import {
   type IOption,
   OptionsContext,
 } from "../../contexts/OptionsContext.tsx";
+import WizardNav from "./WizardNav.tsx";
 
 export default function MultiStep() {
   // set initial state for step to 1 after finishing the other steps.
-  const [step, setStep] = useState<number>(2);
+  const [step, setStep] = useState<number>(1);
   const [selectedTool, setSelectedTool] = useState<string>("");
 
   const { options } = useContext(OptionsContext);
@@ -28,14 +29,7 @@ export default function MultiStep() {
       {step === 1 && (
         <div className="multistep-page">
           <OptionsList />
-          <div className="multistep-buttons-container">
-            <button className="multistep-button" disabled>
-              Previous
-            </button>
-            <button className="multistep-button" onClick={nextStep}>
-              Next
-            </button>
-          </div>
+          <WizardNav canPrev={false} canNext={true} onNext={nextStep} />
         </div>
       )}
       {step === 2 && (
@@ -103,18 +97,12 @@ export default function MultiStep() {
               </div>
             )}
           </div>
-          <div className="multistep-buttons-container">
-            <button className="multistep-button" onClick={prevStep}>
-              Previous
-            </button>
-            <button
-              className="multistep-button"
-              onClick={nextStep}
-              disabled={selectedTool !== "versus"}
-            >
-              Next
-            </button>
-          </div>
+          <WizardNav
+            canPrev={true}
+            onPrev={prevStep}
+            canNext={true}
+            onNext={nextStep}
+          />
         </div>
       )}
       {step === 3 && (
@@ -132,12 +120,7 @@ export default function MultiStep() {
               })}
             </ul>
           </div>
-          <div className="multistep-buttons-container">
-            <button className="multistep-button" onClick={prevStep}>
-              Previous
-            </button>
-            <button className="multistep-button">Finish</button>
-          </div>
+          <WizardNav canPrev={true} onPrev={prevStep} isFinal={true} />
         </div>
       )}
     </div>
