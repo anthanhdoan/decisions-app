@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import OptionsList from "../OptionsList.tsx";
 import "./MultiStep.css";
+import WizardNav from "./WizardNav.tsx";
 import {
   type IOption,
   OptionsContext,
 } from "../../contexts/OptionsContext.tsx";
-import WizardNav from "./WizardNav.tsx";
 
 export default function MultiStep() {
   // set initial state for step to 1 after finishing the other steps.
@@ -14,22 +14,12 @@ export default function MultiStep() {
 
   const { options } = useContext(OptionsContext);
 
-  const nextStep = () => {
-    setStep((prev) => prev + 1);
-  };
-
-  const prevStep = () => {
-    if (step > 1) {
-      setStep((prev) => prev - 1);
-    }
-  };
-
   return (
     <div className="multistep-container">
       {step === 1 && (
         <div className="multistep-page">
           <OptionsList />
-          <WizardNav canPrev={false} canNext={true} onNext={nextStep} />
+          <WizardNav canPrev={false} canNext={true} setStep={setStep} />
         </div>
       )}
       {step === 2 && (
@@ -99,9 +89,8 @@ export default function MultiStep() {
           </div>
           <WizardNav
             canPrev={true}
-            onPrev={prevStep}
-            canNext={true}
-            onNext={nextStep}
+            canNext={selectedTool !== ""}
+            setStep={setStep}
           />
         </div>
       )}
@@ -122,9 +111,10 @@ export default function MultiStep() {
           </div>
           <WizardNav
             canPrev={true}
-            onPrev={prevStep}
+            canNext={false}
             isFinal={true}
             onFinish={() => console.log("Finished!")}
+            setStep={setStep}
           />
         </div>
       )}

@@ -1,42 +1,35 @@
+import type { Dispatch, SetStateAction } from "react";
+
 interface IWizardNavProps {
-  onPrev?: () => void;
-  onNext?: () => void;
-  onFinish?: () => void;
-  canPrev?: boolean;
-  canNext?: boolean;
+  setStep: Dispatch<SetStateAction<number>>;
+  canPrev: boolean;
+  canNext: boolean;
   isFinal?: boolean;
+  onFinish?: () => void;
 }
 
 export default function WizardNav(props: IWizardNavProps) {
+  const nextStep = () => {
+    props.setStep((prev: number) => prev + 1);
+  };
+
+  const prevStep = () => {
+    props.setStep((prev: number) => (prev > 1 ? prev - 1 : prev));
+  };
+
   return (
     <div className="multistep-buttons-container">
-      {!props.canPrev && <button disabled>Previous</button>}
-      {props.canPrev && <button onClick={props.onPrev}>Previous</button>}
+      <button onClick={prevStep} disabled={!props.canPrev}>
+        Previous
+      </button>
 
-      {!props.isFinal && <button onClick={props.onNext}>Next</button>}
-      {props.isFinal && <button onClick={props.onFinish}>Finish</button>}
+      {!props.isFinal ? (
+        <button onClick={nextStep} disabled={!props.canNext}>
+          Next
+        </button>
+      ) : (
+        <button onClick={props.onFinish}>Finish</button>
+      )}
     </div>
   );
 }
-
-// ========= SECOND STEP =========
-// <div className="multistep-buttons-container">
-//   <button className="multistep-button" onClick={prevStep}>
-//     Previous
-//   </button>
-//   <button
-//     className="multistep-button"
-//     onClick={nextStep}
-//     disabled={selectedTool !== "versus"}
-//   >
-//     Next
-//   </button>
-// </div>
-
-// ========= LAST STEP =========
-// <div className="multistep-buttons-container">
-//   <button className="multistep-button" onClick={prevStep}>
-//     Previous
-//   </button>
-//   <button className="multistep-button">Finish</button>
-// </div>
