@@ -1,0 +1,8 @@
+.multistep-buttons-container {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin: 2rem 0 0 0;
+  gap: 0.5rem;
+}

@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
+import "./WizardNav.css";
 
 interface IWizardNavProps {
   setStep: Dispatch<SetStateAction<number>>;
