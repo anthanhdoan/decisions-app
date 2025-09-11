@@ -1,4 +1,11 @@
-import { useRef, useState } from "react";
+import {
+  useRef,
+  useState,
+  type SetStateAction,
+  type Dispatch,
+  type RefObject,
+  type ChangeEvent,
+} from "react";
 import "./ListItem.css";
 import type { IOption } from "../contexts/OptionsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,20 +15,21 @@ import {
   faCancel,
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
+import { ListItemInput } from "./ListItemInput.tsx";
 
 interface IListItemProps {
   optionId: number;
   optionDescription: string;
-  setOptions: React.Dispatch<React.SetStateAction<IOption[]>>;
+  setOptions: Dispatch<SetStateAction<IOption[]>>;
 }
 
 export default function ListItem(props: IListItemProps) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editValue, setEditValue] = useState<string>(props.optionDescription);
-  const inputRef: React.RefObject<HTMLInputElement | null> =
+  const inputRef: RefObject<HTMLInputElement | null> =
     useRef<HTMLInputElement>(null);
 
-  const updateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target === null) return;
     setEditValue(e.target.value);
   };
@@ -56,18 +64,17 @@ export default function ListItem(props: IListItemProps) {
   };
 
   return (
-    <>
+    <li className="option-container" key={props.optionId}>
       <form
         className="list-item-container"
         onSubmit={(e) => e.preventDefault()}
       >
-        <input
+        <ListItemInput
           ref={inputRef}
-          type="text"
-          className={`option-item ${isEditing ? "" : "option-item-saved"}`}
-          readOnly={!isEditing}
           value={editValue}
+          readOnly={!isEditing}
           onChange={updateInput}
+          className={isEditing ? "" : "option-item-saved"}
         />
 
         {!isEditing ? (
@@ -105,6 +112,6 @@ export default function ListItem(props: IListItemProps) {
           </div>
         )}
       </form>
-    </>
+    </li>
   );
 }

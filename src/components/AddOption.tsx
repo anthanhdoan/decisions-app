@@ -35,6 +35,7 @@ export default function AddOption(props: IAddOptionProps) {
     <>
       <form className="addoption-form" onSubmit={(e) => e.preventDefault()}>
         <input
+          id="add-option-input"
           className="addoption-input"
           type="text"
           placeholder="Lasagna"

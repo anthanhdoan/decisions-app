@@ -20,13 +20,11 @@ export default function OptionsList() {
       <ul className="options-container">
         {options.map((option: IOption) => {
           return (
-            <li className="option-container" key={option.id}>
-              <ListItem
-                optionId={option.id}
-                optionDescription={option.description}
-                setOptions={setOptions}
-              />
-            </li>
+            <ListItem
+              optionId={option.id}
+              optionDescription={option.description}
+              setOptions={setOptions}
+            />
           );
         })}
       </ul>

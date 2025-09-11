@@ -7,6 +7,13 @@ import {
   OptionsContext,
 } from "../../contexts/OptionsContext.tsx";
 
+// Refactor the MultiStep component to make it reusable...
+// Idea #1: Create separate components for steps 1, 2 and 3, then create a config
+// file with an array of objects including properties 'step' and 'component'
+// Idea #2: Refactor the entire MultiStep component, and use React Router
+// --> use <Link> instead of <button>
+// --> use switch case to determine where to navigate next
+
 export default function MultiStep() {
   // set initial state for step to 1 after finishing the other steps.
   const [step, setStep] = useState<number>(1);

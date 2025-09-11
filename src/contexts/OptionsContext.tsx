@@ -1,4 +1,10 @@
-import { createContext, useState } from "react";
+import {
+  createContext,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
+  useState,
+} from "react";
 
 export interface IOption {
   id: number;
@@ -13,13 +19,7 @@ export interface IOptionsContext {
 // eslint-disable-next-line react-refresh/only-export-components, @typescript-eslint/no-explicit-any
 export const OptionsContext = createContext<IOptionsContext | any>(undefined);
 
-// Replaced empty initialState for placeholder content; remove before finishing.
-// const initialOptionsState: Array<IOption> = [];
-const initialOptionsState: Array<IOption> = [
-  { id: 1, description: "First option placeholder" },
-  { id: 2, description: "Second option placeholder" },
-  { id: 3, description: "Third option placeholder" },
-];
+const initialOptionsState: Array<IOption> = [];
 
 export const OptionsProvider = ({ children }: { children: ReactNode }) => {
   const [options, setOptions] = useState<Array<IOption>>(initialOptionsState);
