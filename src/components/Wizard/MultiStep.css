@@ -40,5 +40,6 @@ Will likely be refactored and moved to a different component */
 }
 
 .options-list {
+  margin-top: 1rem;
   list-style-position: inside;
 }
