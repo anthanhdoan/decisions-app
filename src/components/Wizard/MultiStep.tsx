@@ -15,14 +15,13 @@ import {
 // --> use switch case to determine where to navigate next
 
 export default function MultiStep() {
-  // set initial state for step to 1 after finishing the other steps.
   const [step, setStep] = useState<number>(1);
   const [selectedTool, setSelectedTool] = useState<string>("");
 
   const { options } = useContext(OptionsContext);
 
   return (
-    <div className="multistep-container">
+    <div className="multistep">
       {step === 1 && (
         <div className="multistep-page">
           <OptionsList />

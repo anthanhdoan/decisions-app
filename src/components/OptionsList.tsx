@@ -21,6 +21,7 @@ export default function OptionsList() {
         {options.map((option: IOption) => {
           return (
             <ListItem
+              key={option.id}
               optionId={option.id}
               optionDescription={option.description}
               setOptions={setOptions}

@@ -1,14 +1,18 @@
-.multistep-container {
+.multistep {
   border-radius: 0.5rem;
   box-shadow: 0 0 1rem #ddd;
   background-color: #fff;
+  width: 700px;
+  height: 800px;
+  justify-self: center;
+  align-self: center;
 }
 
 .multistep-page {
   box-sizing: border-box;
-  width: 700px;
+  height: 100%;
+  width: 100%;
   padding: 2rem 2.5rem;
-  height: 800px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

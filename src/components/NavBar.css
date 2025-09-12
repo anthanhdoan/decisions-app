@@ -1,10 +1,13 @@
 .nav-bar {
+  position: fixed;
+  top: 0;
   height: 3rem;
-  width: 100%;
+  width: 1200px;
   background-color: #eee;
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
+  justify-self: center;
 }
 
 .nav-bar::after {
@@ -12,7 +15,7 @@
   height: 3rem;
   content: "";
   background-color: #eee;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
@@ -23,7 +26,6 @@
 }
 
 .nav-logo:hover {
-  cursor: pointer;
   background-color: #eee;
 }
 
@@ -36,6 +38,7 @@
 
 .nav-item {
   padding: 0.5rem 1rem;
+  text-decoration: none;
 }
 
 .nav-item:hover {

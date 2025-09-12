@@ -1,0 +1,11 @@
+.home-page {
+  height: 100%;
+  width: 100%;
+  align-self: center;
+  justify-self: center;
+}
+
+.home-banner {
+  height: 5rem;
+  background: #005fb8;
+}

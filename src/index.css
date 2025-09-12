@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   /* primary accents */
   --color-primary: #8075ca;
@@ -33,9 +39,6 @@
 }
 
 body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
   background: linear-gradient(
     80deg,
     #e6fff7 0%,

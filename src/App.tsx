@@ -1,18 +1,14 @@
 import "./App.css";
-import MultiStep from "./components/Wizard/MultiStep.tsx";
-import NavBar from "./components/NavBar";
-import { OptionsProvider } from "./contexts/OptionsContext";
+import { Routes } from "./Routes.tsx";
+import { OptionsProvider } from "./contexts/OptionsContext.tsx";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <div className="app-container">
-        <OptionsProvider>
-          <MultiStep></MultiStep>
-        </OptionsProvider>
+    <OptionsProvider>
+      <div className="app">
+        <Routes />
       </div>
-    </div>
+    </OptionsProvider>
   );
 }
 
