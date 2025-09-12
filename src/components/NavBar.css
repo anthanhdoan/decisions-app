@@ -3,7 +3,7 @@
   top: 0;
   height: 3rem;
   width: 1200px;
-  background-color: #eee;
+  /*background-color: #eee;*/
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -14,11 +14,13 @@
   width: 100vw;
   height: 3rem;
   content: "";
-  background-color: #eee;
+  /*background-color: #eee;*/
   position: fixed;
+  border-bottom: solid 1px #eee;
   top: 0;
   left: 0;
   z-index: -1;
+  backdrop-filter: blur(15px);
 }
 
 .nav-logo {
@@ -26,7 +28,7 @@
 }
 
 .nav-logo:hover {
-  background-color: #ddd;
+  cursor: default;
 }
 
 .nav-ul {
@@ -43,10 +45,10 @@
 }
 
 .nav-item-active {
-  background-color: #ddd;
+  background-color: #eee;
 }
 
 .nav-item:hover {
-  background-color: #ddd;
+  background-color: #eee;
   cursor: pointer;
 }

@@ -25,19 +25,26 @@ export default function MultiStep() {
       {step === 1 && (
         <div className="multistep-page">
           <OptionsList />
-          <WizardNav canPrev={false} canNext={true} setStep={setStep} />
+          <WizardNav
+            canPrev={false}
+            canNext={options.length > 0}
+            setStep={setStep}
+          />
         </div>
       )}
       {step === 2 && (
         <div className="multistep-page">
           <div>
-            <h1>Choose a decision making helper</h1>
+            <h1 style={{ marginBottom: "1rem" }}>
+              Choose a decision making helper
+            </h1>
             <p>
               Make a choice depending on your decision making needs. An
               explanation will be shown after selecting a helper.
             </p>
             <label htmlFor="tool-dropdown">
               <select
+                style={{ marginTop: "1rem" }}
                 required
                 name="tool dropdown"
                 id="tool-dropdown"
@@ -51,13 +58,13 @@ export default function MultiStep() {
               </select>
             </label>
             {selectedTool && (
-              <p>
+              <p style={{ margin: "1rem 0" }}>
                 You have selected the <b>{selectedTool}</b> decisionmaking
                 helper.
               </p>
             )}
             {selectedTool === "versus" && (
-              <div className="tool-explanation">
+              <div>
                 <p>
                   This decision-making helper is best used when you need to
                   decide on a single option.
@@ -69,7 +76,7 @@ export default function MultiStep() {
               </div>
             )}
             {selectedTool === "random" && (
-              <div className="tool-explanation">
+              <div>
                 <p>
                   This decision-making helper is best used when you have several
                   options to choose from, but don't have a real preference.
@@ -79,7 +86,7 @@ export default function MultiStep() {
               </div>
             )}
             {selectedTool === "tournament" && (
-              <div className="tool-explanation">
+              <div>
                 <p>
                   This decision-making helper is best used you need to decide on
                   multiple options.
@@ -103,13 +110,14 @@ export default function MultiStep() {
       {step === 3 && (
         <div className="multistep-page">
           <div>
-            <h1>Confirmation</h1>
+            <h1 style={{ marginBottom: "1rem" }}>Confirmation</h1>
             <p>
               You have selected the <b>'{selectedTool}'</b> decision-making
               helper.
             </p>
+            <br />
             <p>These are the options you have listed:</p>
-            <ul>
+            <ul className="options-list">
               {options.map((option: IOption) => {
                 return <li key={option.id}>{option.description}</li>;
               })}

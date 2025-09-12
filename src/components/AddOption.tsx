@@ -33,7 +33,11 @@ export default function AddOption(props: IAddOptionProps) {
 
   return (
     <>
-      <form className="add-option-form" onSubmit={(e) => e.preventDefault()}>
+      <form
+        style={{ marginTop: "1rem" }}
+        className="add-option-form"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <input
           id="add-option-input"
           className="add-option-input"

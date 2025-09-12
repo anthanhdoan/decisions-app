@@ -9,7 +9,7 @@ export default function OptionsList() {
 
   return (
     <div className="options-list-container">
-      <h1 className={"options-list-title"}>Adding your options</h1>
+      <h1 style={{ marginBottom: "1rem" }}>Adding your options</h1>
       <p>
         Create a list of options. <br />
         Then, click next to select your decision making tool.
