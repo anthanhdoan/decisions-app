@@ -6,6 +6,7 @@ import {
   type IOption,
   OptionsContext,
 } from "../../contexts/OptionsContext.tsx";
+import { useNavigate } from "react-router";
 
 // Refactor the MultiStep component to make it reusable...
 // Idea #1: Create separate components for steps 1, 2 and 3, then create a config
@@ -17,6 +18,8 @@ import {
 export default function MultiStep() {
   const [step, setStep] = useState<number>(1);
   const [selectedTool, setSelectedTool] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const { options } = useContext(OptionsContext);
 
@@ -127,7 +130,7 @@ export default function MultiStep() {
             canPrev={true}
             canNext={false}
             isFinal={true}
-            onFinish={() => console.log("Finished!")}
+            onFinish={() => navigate(`/${selectedTool}`)}
             setStep={setStep}
           />
         </div>
