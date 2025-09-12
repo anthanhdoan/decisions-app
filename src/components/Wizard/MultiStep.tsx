@@ -55,8 +55,8 @@ export default function MultiStep() {
                 defaultValue={selectedTool}
               >
                 <option value="">Select your decision-making helper</option>
-                <option value="versus">Versus mode</option>
                 <option value="random">Random decision</option>
+                <option value="versus">Versus mode</option>
                 <option value="tournament">Tournament mode</option>
               </select>
             </label>
@@ -65,6 +65,15 @@ export default function MultiStep() {
                 You have selected the <b>{selectedTool}</b> decisionmaking
                 helper.
               </p>
+            )}
+            {selectedTool === "random" && (
+              <div>
+                <p>
+                  This decision-making helper is best used when you have several
+                  options to choose from, but don't have a real preference.
+                </p>
+                <p>It will simply choose one of your options at random.</p>
+              </div>
             )}
             {selectedTool === "versus" && (
               <div>
@@ -76,15 +85,6 @@ export default function MultiStep() {
                   It will have you make a series of choices between two of your
                   possible options, leaving one option as the winner!
                 </p>
-              </div>
-            )}
-            {selectedTool === "random" && (
-              <div>
-                <p>
-                  This decision-making helper is best used when you have several
-                  options to choose from, but don't have a real preference.
-                </p>
-                <p>It will simply choose one of your options at random.</p>
                 <p style={{ color: "red" }}>Coming soon...</p>
               </div>
             )}

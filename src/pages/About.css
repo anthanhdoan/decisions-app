@@ -1,0 +1,26 @@
+.about > p {
+  margin-top: 1rem;
+}
+
+.about > h1 {
+  margin-top: 1rem;
+}
+
+.blockquote {
+  margin-top: 1rem;
+  font-size: 2rem;
+  width: 500px;
+  padding: 2rem 5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem #ddd;
+  text-align: center;
+}
+
+.about > ul {
+  margin-left: 1rem;
+}
+
+.about > ul > li > ul {
+  margin-left: 1rem;
+}
