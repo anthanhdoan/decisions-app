@@ -33,17 +33,21 @@ export default function AddOption(props: IAddOptionProps) {
 
   return (
     <>
-      <form className="addoption-form" onSubmit={(e) => e.preventDefault()}>
+      <form className="add-option-form" onSubmit={(e) => e.preventDefault()}>
         <input
           id="add-option-input"
-          className="addoption-input"
+          className="add-option-input"
           type="text"
           placeholder="Lasagna"
           value={inputValue}
           onChange={updateInput}
           ref={inputElementRef}
         />
-        <button disabled={!inputValue} onClick={addOption}>
+        <button
+          className={inputValue ? "btn-info" : ""}
+          disabled={!inputValue}
+          onClick={addOption}
+        >
           Add
         </button>
       </form>

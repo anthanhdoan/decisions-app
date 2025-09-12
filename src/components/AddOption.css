@@ -1,18 +1,13 @@
-.addoption-input {
+.add-option-input {
   padding: 0.5rem 1rem;
   width: 100%;
 }
 
-.addoption-input:focus {
+.add-option-input:focus {
   outline: none;
 }
 
-h1 {
-  margin: 0;
-  padding: 0;
-}
-
-.addoption-form {
+.add-option-form {
   width: 100%;
   display: flex;
   justify-content: space-between;

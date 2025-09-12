@@ -4,7 +4,11 @@
   padding: 0;
 }
 
-.optionslist-container {
+p {
+  margin: 1rem 0;
+}
+
+.options-list-container {
   display: flex;
   flex-direction: column;
   height: 100%;
